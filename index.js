@@ -4,11 +4,11 @@
     const input = document.createElement("input");
     input.classList.add("form-control");
 
-    const btn = document.querySelector("button");
-    btn.addEventListener("click", function() {
+    const btn = document.querySelectorAll("button");
+    btn[0].addEventListener("click", function() {
         
 	    const dialog = modal({
-            title: "Set text", 
+            title: "Input text", 
             editor: input
         });
 
@@ -18,6 +18,15 @@
                     span.innerHTML = input.value;
                 }
             }
+        });
+    
+        dialog.open();
+    });
+
+    btn[1].addEventListener("click", function() {
+        
+	    const dialog = modal({
+            title: "Message"
         });
     
         dialog.open();

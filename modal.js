@@ -25,9 +25,13 @@ function modal(spec) {
         }
     }
 
-    const overlay = document.getElementById("overlay");
+    const id = editor ? "editor-modal" : "message-modal";
+    const temp = document.getElementById(id);
+    const clone = temp.content.cloneNode(true);
+    const overlay = clone.children[0];
+    
     overlay.addEventListener("click", function() {
-        overlay.style.display = "none";
+        overlay.remove();
     });
 
     const dialog = overlay.children[0];
@@ -38,7 +42,7 @@ function modal(spec) {
     const modalButtons = dialog.querySelectorAll("button.btn-modal");
     modalButtons.forEach( btn => {
         btn.addEventListener("click", e => {
-            overlay.style.display = "none";
+            overlay.remove();
             notify(btn);
         });
     });
@@ -53,7 +57,7 @@ function modal(spec) {
             body.appendChild(editor);
         }
 
-        overlay.style.display = "block";
+        document.body.appendChild(overlay);
     }
         
     return Object.freeze({
