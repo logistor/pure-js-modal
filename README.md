@@ -1,1 +1,1 @@
-#pure-js-modal
+Bootstrap modal without jQuery.
