@@ -1,6 +1,13 @@
+"use strict"
+
+const EDITOR_MODAL = "editor-modal";
+const QUESTION_MODAL = "question-modal";
+const MESSAGE_MODAL = "message-modal";
+
 function modal(spec) {
 
-    let {title} = spec || "Message";
+    let {type} = spec;
+    let {title} = spec;
     let {editor} = spec;
 
     const observers = [];
@@ -25,8 +32,7 @@ function modal(spec) {
         }
     }
 
-    const id = editor ? "editor-modal" : "message-modal";
-    const temp = document.getElementById(id);
+    const temp = document.getElementById(type);
     const clone = temp.content.cloneNode(true);
     const overlay = clone.children[0];
     
@@ -35,7 +41,7 @@ function modal(spec) {
     });
 
     const dialog = overlay.children[0];
-    dialog.addEventListener("click", function( e ) {
+    dialog.addEventListener("click", e => {
         e.stopPropagation();
     });
 

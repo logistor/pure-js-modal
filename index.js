@@ -8,6 +8,7 @@
     btn[0].addEventListener("click", function() {
         
 	    const dialog = modal({
+            type: EDITOR_MODAL,
             title: "Input text", 
             editor: input
         });
@@ -26,6 +27,17 @@
     btn[1].addEventListener("click", function() {
         
 	    const dialog = modal({
+            type: QUESTION_MODAL,
+            title: "Question?"
+        });
+    
+        dialog.open();
+    });
+
+    btn[2].addEventListener("click", function() {
+        
+	    const dialog = modal({
+            type: MESSAGE_MODAL,
             title: "Message"
         });
     
