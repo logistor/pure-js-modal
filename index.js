@@ -1,6 +1,6 @@
 (function() {
 
-    const span = document.querySelector("div.row > span");
+    const labels = document.querySelectorAll("label");
     const input = document.createElement("input");
     input.classList.add("form-control");
 
@@ -16,7 +16,7 @@
         dialog.addObserver({
             update: function(btn) {
                 if (btn.innerHTML === "Ok") {
-                    span.innerHTML = input.value;
+                    labels[0].innerHTML = input.value;
                 }
             }
         });
@@ -29,6 +29,16 @@
 	    const dialog = modal({
             type: QUESTION_MODAL,
             title: "Question?"
+        });
+
+        dialog.addObserver({
+            update: function(btn) {
+                if (btn.innerHTML === "Ok") {
+                    labels[1].innerHTML = "Operation accepted.";
+                } else {
+                    labels[1].innerHTML = "Operation cancelled.";
+                }
+            }
         });
     
         dialog.open();
